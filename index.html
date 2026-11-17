@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drip Irrigation Flow & Tubing Calculator — GPH Emitters & Pressure — Accurate Material Estimator</title>
+  <meta name="description" content="Calculate total garden drip irrigation flow rate (GPH), mainline poly tubing footage, emitter counts, and watering duration.">
+  <link rel="canonical" href="https://sebiglesias.com.ar/drip-irrigation-calculator/">
+  <meta name="theme-color" content="#0d9488">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Drip Irrigation Flow & Tubing Calculator — GPH Emitters & Pressure">
+  <meta property="og:description" content="Calculate total garden drip irrigation flow rate (GPH), mainline poly tubing footage, emitter counts, and watering duration.">
+  <meta property="og:url" content="https://sebiglesias.com.ar/drip-irrigation-calculator/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BNDBQP0W7');
+  </script>
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Drip Irrigation Flow & Tubing Calculator \u2014 GPH Emitters & Pressure",
+    "url": "https://sebiglesias.com.ar/drip-irrigation-calculator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "description": "Calculate total garden drip irrigation flow rate (GPH), mainline poly tubing footage, emitter counts, and watering duration.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the maximum flow rate of 1/2-inch drip irrigation tubing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard 1/2-inch poly drip tubing (.600 ID x .700 OD) has a maximum capacity of 200 to 220 Gallons Per Hour (GPH) or 3.6 GPM. If your emitters total more than 220 GPH, water pressure will drop drastically at the end of the line. Split your garden into two independent zones using an automatic dual-zone timer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is a 25 PSI pressure regulator mandatory on drip systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Household outdoor hose spigots deliver municipal water pressure between 50 and 80 PSI. Drip fittings and micro-tubing are designed for low pressure (20 to 30 PSI). Without a 25 PSI regulator, fittings will blow apart and emitters will spray water like geysers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Pressure Compensating (PC) emitter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pressure compensating emitters have an internal flexible silicone diaphragm that regulates flow. Whether the emitter is located at the beginning of the hose at 30 PSI or 100 feet downhill at 18 PSI, it delivers the exact same rate of water (e.g., 1.0 GPH) to every single plant."
+        }
+      }
+    ]
+  }
+]
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">💧 Water Conservation & Micro-Irrigation</div>
+      <h1>Garden Drip Irrigation & Emitter Calculator</h1>
+      <p class="subtitle">Calculate total Gallons Per Hour (GPH), 1/2" mainline vs 1/4" micro-tubing lengths, and 25 PSI pressure regulators.</p>
+    </header>
+
+    <!-- AdSense Top Banner -->
+    <div style="text-align:center; margin: 16px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <main class="calc-grid">
+      <!-- Inputs Card -->
+      <form class="card" id="drip-irrigation-calculator-form" onsubmit="event.preventDefault();">
+        <h2>📐 Garden Row Dimensions & Spacing</h2>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label for="rowLen">Row / Bed Length</label>
+            <div class="input-wrap">
+              <input type="number" id="rowLen" step="5" min="5" value="30" required>
+              <span class="input-suffix">ft</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rowCount">Number of Garden Rows</label>
+            <div class="input-wrap">
+              <input type="number" id="rowCount" step="1" min="1" value="4" required>
+              <span class="input-suffix">rows</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label for="plantSpacing">Plant Spacing Along Row</label>
+            <select id="plantSpacing">
+              <option value="12">12 Inches (Dense Veggies / Greens / Carrots)</option>
+              <option value="18" selected>18 Inches (Peppers / Bush Tomatoes)</option>
+              <option value="24">24 Inches (Large Tomatoes / Squash)</option>
+              <option value="36">36 Inches (Berry Bushes / Fruit Trees)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="emitterGph">Drip Emitter Flow Rate</label>
+            <select id="emitterGph">
+              <option value="0.5">0.5 GPH (Slow Infiltration / Heavy Clay)</option>
+              <option value="1.0" selected>1.0 GPH (Standard Loamy Garden Soil)</option>
+              <option value="2.0">2.0 GPH (Fast Sandy Soil / Large Plants)</option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Results Card -->
+      <div class="card">
+        <h2>🎯 Irrigation Flow & Tubing Needed</h2>
+        
+        <div class="result-hero">
+          <div class="result-label">Total System Flow Rate</div>
+          <div class="result-number" id="totalGph">80</div>
+          <div class="result-label" style="color:#ffffff;">Gallons Per Hour (GPH)</div>
+          <div style="font-size:0.95rem; color:#99f6e4; margin-top:6px;" id="zoneCapacity">Well Within Max 220 GPH Zone Limit</div>
+        </div>
+
+        <div class="sub-hero-grid">
+          <div class="sub-hero-col">
+            <div class="sub-hero-label">Drip Emitters Required</div>
+            <div class="sub-hero-val" id="emitterCount">80 Emitters</div>
+            <div class="sub-hero-sub">Pressure compensating (PC)</div>
+          </div>
+          <div class="sub-hero-col">
+            <div class="sub-hero-label">1/2" Mainline Poly Tubing</div>
+            <div class="sub-hero-val" id="mainlineFt">140 ft</div>
+            <div class="sub-hero-sub">Includes manifold header</div>
+          </div>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-desc">Watering Time Per Week</div>
+            <div class="spec-val">30–45 Mins (3x / Week)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Pressure Regulator</div>
+            <div class="spec-val">25 PSI (Hose Faucet Thread)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Water Savings vs Sprinklers</div>
+            <div class="spec-val" style="color:#2dd4bf;">Save 50% to 70% Water</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">1/4" Micro-Tubing Needed</div>
+            <div class="spec-val" id="microTubing">≈ 80 ft (1ft/Plant)</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Amazon Supplies Box -->
+    <section class="supplies-card">
+      <h3>🛠️ Recommended Tools, Hardware & Building Supplies</h3>
+      <div class="supplies-grid">
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Rain Bird T22-250S Drip Irrigation 1/2" Blank Distribution Tubing (250ft)</div>
+            <div class="supply-desc">Commercial-grade UV resistant polyethylene tubing for mainline headers and garden row branches.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=rain+bird+half+inch+drip+tubing+250ft&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Orbit 2-Zone Digital Hose Faucet Battery-Powered Timer</div>
+            <div class="supply-desc">Automates dual drip irrigation zones with rain delay and manual bypass overrides.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=orbit+2+zone+digital+hose+faucet+timer&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Rain Bird 25 PSI Hose Thread Pressure Regulator</div>
+            <div class="supply-desc">Reduces high municipal faucet pressure down to safe 25 PSI to prevent blown-off drip fittings.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=rain+bird+25+psi+pressure+regulator+drip&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Rain Bird 1.0 GPH Pressure Compensating Emitters (Pack of 50)</div>
+            <div class="supply-desc">Self-flushing emitters deliver exactly 1.0 gallon per hour even on sloped garden hillsides.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=rain+bird+1+gph+pressure+compensating+emitters&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+      </div>
+      <p style="font-size:0.75rem; color:#94a3b8; margin-top:14px; margin-bottom:0; text-align:center;">
+        ⚖️ <em>Affiliate Notice: As an Amazon Associate, this site earns from qualifying purchases at no additional cost to you. We strictly link to trade-grade construction tools, hardware, and safety materials.</em>
+      </p>
+    </section>
+
+    <!-- FAQ Section for SEO -->
+    <section class="faq-section">
+      <h2 style="font-size:1.35rem; color:#ffffff; margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">What is the maximum flow rate of 1/2-inch drip irrigation tubing?</div>
+        <div class="faq-a">Standard 1/2-inch poly drip tubing (.600 ID x .700 OD) has a maximum capacity of 200 to 220 Gallons Per Hour (GPH) or 3.6 GPM. If your emitters total more than 220 GPH, water pressure will drop drastically at the end of the line. Split your garden into two independent zones using an automatic dual-zone timer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why is a 25 PSI pressure regulator mandatory on drip systems?</div>
+        <div class="faq-a">Household outdoor hose spigots deliver municipal water pressure between 50 and 80 PSI. Drip fittings and micro-tubing are designed for low pressure (20 to 30 PSI). Without a 25 PSI regulator, fittings will blow apart and emitters will spray water like geysers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is a Pressure Compensating (PC) emitter?</div>
+        <div class="faq-a">Pressure compensating emitters have an internal flexible silicone diaphragm that regulates flow. Whether the emitter is located at the beginning of the hose at 30 PSI or 100 feet downhill at 18 PSI, it delivers the exact same rate of water (e.g., 1.0 GPH) to every single plant.</div>
+      </div>
+    </section>
+
+    <!-- Bottom AdSense Banner -->
+    <div style="text-align:center; margin: 32px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <p>© 2026 <a href="https://sebiglesias.com.ar/">sebiglesias.com.ar</a> · Drip Irrigation Flow & Tubing Calculator — GPH Emitters & Pressure. Educational and trade reference tool.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Drip Irrigation Flow & Tubing Calculator \u2014 GPH Emitters & Pressure",
+  "short_name": "Drip Calc",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#061311",
+  "theme_color": "#0d9488",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
